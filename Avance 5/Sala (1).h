@@ -58,15 +58,17 @@ class Sala{
 Sala :: Sala(){
   num_filas=0;
   num_columnas=0;
+  id=0;
 };
 
 vector<Pelicula*> Sala::getVpeli(){
   return vpeli;
 }
 
-Sala :: Sala(int _num_filas, int _num_columnas){
+Sala :: Sala(int _num_filas, int _num_columnas, int _id){
   num_filas=_num_filas;
   num_columnas=_num_columnas;
+  id=_id;
 };
 
 void Sala :: crear_peliculas(){
