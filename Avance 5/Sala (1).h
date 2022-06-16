@@ -95,12 +95,12 @@ void Sala:: agregar_pelicula(Pelicula*a){
   vpeli.push_back(a);
 }
 
-void Sala :: void eliminar_pelicula(Pelicula*a){
+void Sala :: eliminar_pelicula(Pelicula*a){
   int posicion;
   mostrar_cartelera();
   cout<<"Ingrese el id de la película a eliminar: "
   cin>>posicion;
-  vpeli.erase(vpeli..begin()+posicion--);
+  vpeli.erase(vpeli.begin()+posicion--);
 };
 
 void Sala :: hacer_asientos(){
