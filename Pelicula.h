@@ -2,9 +2,9 @@
  * Proyecto Cine clase Película
  * María Fernanda Moreno Gómez
  * A01708653
- * 13/06/2022
+ * 17/06/2022
  * Esta clase define clase abstracta Película, el cual hereda atributos a las clases Menores y Mayores.
- * La finalidad de esta clase es controlar las películas con las distintas categorías que se tienen en el cine para que los usuarios, dependiendo de la edad que tengan, puedan ver o no las películas con una advertencia y con créditos recortados o no, dependiendo de la clasificación de la película
+ * La finalidad de esta clase es controlar las películas con las distintas categorías que se tienen en el cine para que los usuarios, dependiendo de la edad que tengan, puedan ver o no las películas con una advertencia y con créditos recortados, dependiendo de la clasificación de la película
  */
 
 #ifndef PELICULA_H
@@ -15,6 +15,7 @@
 #include <stdlib.h>
 using namespace std;
 
+//Clase Pelicula será abstracta
 class Pelicula {
   protected:
     int id;
@@ -41,8 +42,9 @@ class Pelicula {
     bool getMayor_menor(); 
 
     //Otros métodos
-    void advertencia(); //Polimorfismo
-    virtual void recorte() = 0; //Clase abstracta
+    string advertencia(); //Polimorfismo
+    int recorte_creditos(); //Polimorfismo
+    virtual string mostrar_pelicula() = 0; //Método sobreescrito más adelante
 };
 
 Pelicula :: Pelicula(int _id, string _titulo, int _duracion, string _genero, string _descripcion, bool _mayor_menor){
@@ -65,10 +67,10 @@ Pelicula ::Pelicula(const Pelicula& a){
 
 Pelicula ::Pelicula(){
   id=0;
-  titulo="Indefinido";
+  titulo="";
   duracion=0;
-  genero="N/A";
-  descripcion="N/A";
+  genero="";
+  descripcion="";
   mayor_menor=1;
 };
 
@@ -98,9 +100,31 @@ bool Pelicula::getMayor_menor(){
 };
 
 //Otros métodos
-void Pelicula::advertencia(){
-  descripcion+="Apto para todo público";
+
+/**
+ * advertencia genera una advertencia acerca de que la película es apta para todo público
+ *
+Es un método al ser creado para ocasionar polimorfismo entre las clases Película, Menores y Mayores, tiene como finalidad proyectar un mensaje de advertencia dependiendo de la clase heredada en la que sea utilizado. Por sí mismo, no va a funcionar en esta clase ya que Pelicula es una clase abstracta.
+ *
+ * @param 
+ * @return string con la advertencia
+ */
+string Pelicula::advertencia(){
+  string advertencia="¡Advertencia!";
+  return advertencia;
 };
 
+/**
+ * recorte_creditos hace un recorte a la duración de la película
+ *
+Es un método que, al ser creado especialmente para ocasionar polimorfismo entre las clases Película, Menores y Mayores, tiene como finalidad hacer un recorte de tiempo distinto dependiendo de la edad que es dirigida la película. Por sí mismo, no va a funcionar en esta clase ya que Película es una clase abstracta y no se pueden isntanciar objetos de esta.
+ *
+ * @param 
+ * @return int con el resultado de la resta de la duración
+ */
+int Pelicula::recorte_creditos(){
+  duracion+=0;
+  return duracion;
+};
 
 #endif
