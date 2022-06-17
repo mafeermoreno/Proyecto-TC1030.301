@@ -22,3 +22,4 @@ int main() {
   sala1.imprime_peliculas();
   //void agrega_menores()
 }
+//Me basé en el proyecto demo para hacer este programa: https://replit.com/@MaferMoreno/Proyecto-Demo-Benja#Empresa.h
